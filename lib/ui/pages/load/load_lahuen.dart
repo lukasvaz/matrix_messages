@@ -1,8 +1,10 @@
-import 'package:frontend/providers/load_hospitals_provider.dart';
-import 'package:frontend/ui/pages/hospitals/hospitals.dart';
+// import 'dart:nativewrappers/_internal/vm_shared/lib/null_patch.dart';
+
+import 'package:matrix_messages/providers/load_hospitals_provider.dart';
+// import 'package:matrix_messages/ui/pages/hospitals/hospitals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:frontend/ui/pages/profile/profile.dart';
-import 'package:frontend/providers/auth_provider.dart';
+import 'package:matrix_messages/ui/pages/profile/profile.dart';
+import 'package:matrix_messages/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -54,15 +56,17 @@ class LoadLahuenState extends State<LoadLahuen> {
           // Navegamos a ProfilePage después del login
           _navigateToProfile();
         });
-      } else {
-        // Si hay más de uno o ninguno navegamos a Hospitals
-        Future.delayed(const Duration(seconds: 2), () {
-          if (mounted) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const Hospitals()));
-          }
-        });
-      }
+      } 
+      // else {
+      //   // Si hay más de uno o ninguno navegamos a Hospitals
+      //   Future.delayed(const Duration(seconds: 2), () {
+      //     if (mounted) {
+      //       Navigator.pushReplacement(context,
+      //       // empty for now
+      //           MaterialPageRoute(builder: (context) => ));
+      //     }
+      //   });
+      // }
     }
   }
 

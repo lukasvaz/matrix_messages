@@ -1,4 +1,4 @@
-import 'package:frontend/services/matrix/matrix_service.dart';
+import 'package:matrix_messages/services/matrix/matrix_service.dart';
 import 'package:matrix/matrix.dart';
 import 'dart:math';
 

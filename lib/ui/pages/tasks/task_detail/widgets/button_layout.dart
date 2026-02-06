@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/domain/entities/task.dart';
-import 'package:frontend/ui/pages/widgets/secondary_button.dart';
-import 'package:frontend/ui/pages/widgets/primary_button.dart';
-import 'package:frontend/ui/pages/widgets/tertiary_button.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
+import 'package:matrix_messages/ui/pages/widgets/secondary_button.dart';
+import 'package:matrix_messages/ui/pages/widgets/primary_button.dart';
+import 'package:matrix_messages/ui/pages/widgets/tertiary_button.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 

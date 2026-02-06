@@ -1,7 +1,7 @@
-import 'package:frontend/ui/pages/tasks/widgets/task_alert.dart';
-import 'package:frontend/ui/pages/tasks/widgets/task_state.dart';
-import 'package:frontend/domain/entities/task.dart';
-import 'package:frontend/utils/utils.dart';
+import 'package:matrix_messages/ui/pages/tasks/widgets/task_alert.dart';
+import 'package:matrix_messages/ui/pages/tasks/widgets/task_state.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
+import 'package:matrix_messages/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class UpperCard extends StatelessWidget {

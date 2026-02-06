@@ -1,4 +1,4 @@
-import 'package:frontend/ui/pages/channels/channels_page/widgets/room_tile.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_page/widgets/room_tile.dart';
 import 'package:flutter/material.dart';
 
 class FolderTile extends StatefulWidget {

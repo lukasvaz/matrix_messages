@@ -1,6 +1,7 @@
-import 'package:frontend/providers/load_hospitals_provider.dart';
+import 'package:matrix_messages/providers/load_hospitals_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:frontend/ui/pages/load/load_lahuen.dart';
+import 'package:matrix_messages/ui/pages/load/load_lahuen.dart';
+import 'package:matrix_messages/ui/pages/profile/profile.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'services/matrix/client_model.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,7 @@ import 'providers/auth_provider.dart';
 import 'package:matrix/matrix.dart';
 
 main() async {
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load(fileName: ".env");
   final client = await initializeMatrixClient();
   final user = await SharedPreferences.getInstance()
       .then((prefs) => prefs.getString('username'));
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
             builder: (context, child) => child!,
-            debugShowCheckedModeBanner: true,
-            home: const LoadLahuen()));
+            debugShowCheckedModeBanner: false,
+            home: const ProfilePage()));
   }
 }

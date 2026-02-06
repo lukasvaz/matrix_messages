@@ -1,4 +1,4 @@
-import 'package:frontend/ui/pages/channels/channel_chat/channel_chat.dart';
+import 'package:matrix_messages/ui/pages/channels/channel_chat/channel_chat.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';

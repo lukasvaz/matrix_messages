@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
-import 'package:frontend/ui/pages/channels/channel_chat/widgets/mention_text.dart';
+import 'package:matrix_messages/ui/pages/channels/channel_chat/widgets/mention_text.dart';
 
 class SendMessage extends StatefulWidget {
   final double screenWidth;

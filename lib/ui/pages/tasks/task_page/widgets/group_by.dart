@@ -1,6 +1,6 @@
-import 'package:frontend/ui/pages/widgets/custom_radio_button.dart';
-import 'package:frontend/ui/pages/widgets/secondary_button.dart';
-import 'package:frontend/ui/pages/widgets/primary_button.dart';
+import 'package:matrix_messages/ui/pages/widgets/custom_radio_button.dart';
+import 'package:matrix_messages/ui/pages/widgets/secondary_button.dart';
+import 'package:matrix_messages/ui/pages/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
 class GroupBy extends StatefulWidget {

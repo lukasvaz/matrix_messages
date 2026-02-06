@@ -1,5 +1,5 @@
-import 'package:frontend/ui/pages/tasks/task_page/widgets/task_tile.dart';
-import 'package:frontend/domain/entities/task.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/widgets/task_tile.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
 import 'package:flutter/material.dart';
 
 class GroupSeparator extends StatefulWidget {
@@ -35,7 +35,8 @@ class GroupSeparatorState extends State<GroupSeparator> {
     return Theme(
         data: Theme.of(context).copyWith(
             dividerColor: Colors.transparent,
-            cardTheme: const CardTheme(margin: EdgeInsets.all(0))),
+            // cardTheme: const CardTheme(margin: EdgeInsets.all(0))),
+            cardTheme: const CardThemeData(margin: EdgeInsets.all(0))),
         child: Column(children: [
           ListTile(
               contentPadding:

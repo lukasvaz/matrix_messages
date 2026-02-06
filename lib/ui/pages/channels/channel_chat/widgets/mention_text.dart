@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/globals.dart';
+import 'package:matrix_messages/globals.dart';
 import 'package:matrix/matrix.dart';
 
 class MentionTextField extends StatefulWidget {

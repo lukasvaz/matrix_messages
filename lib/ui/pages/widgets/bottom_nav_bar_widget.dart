@@ -1,7 +1,7 @@
-import 'package:frontend/ui/pages/channels/channels_page/channels_page.dart';
-import 'package:frontend/ui/pages/tasks/task_page/task_page.dart';
-import 'package:frontend/ui/pages/widgets/bottom_nav_item.dart';
-import 'package:frontend/ui/pages/profile/profile.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_page/channels_page.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/task_page.dart';
+import 'package:matrix_messages/ui/pages/widgets/bottom_nav_item.dart';
+import 'package:matrix_messages/ui/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBarWidget extends StatelessWidget {

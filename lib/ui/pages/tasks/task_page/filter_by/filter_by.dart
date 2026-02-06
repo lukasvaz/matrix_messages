@@ -1,6 +1,6 @@
-import 'package:frontend/ui/pages/tasks/task_page/filter_by/widgets/subpanel_view.dart';
-import 'package:frontend/ui/pages/tasks/task_page/filter_by/widgets/panel_view.dart';
-import 'package:frontend/domain/entities/task.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/filter_by/widgets/subpanel_view.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/filter_by/widgets/panel_view.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';

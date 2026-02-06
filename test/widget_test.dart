@@ -9,11 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:matrix_messages/main.dart';
+import 'package:matrix_messages/services/matrix/client_model.dart';
 
 void main() {
+  
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    final client = await initializeMatrixClient();
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(MyApp(client: client, user: ""));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

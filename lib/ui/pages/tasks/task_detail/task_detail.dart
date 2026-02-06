@@ -1,12 +1,12 @@
-import 'package:frontend/ui/pages/tasks/task_detail/widgets/upper_card.dart';
-import 'package:frontend/ui/pages/tasks/task_detail/widgets/lower_card.dart';
-import 'package:frontend/services/matrix/matrix_service.dart';
-import 'package:frontend/domain/entities/task.dart';
-import 'package:frontend/utils/utils.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_detail/widgets/upper_card.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_detail/widgets/lower_card.dart';
+import 'package:matrix_messages/services/matrix/matrix_service.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
+import 'package:matrix_messages/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
-import 'package:frontend/ui/pages/widgets/bottom_nav_bar_widget.dart';  
+import 'package:matrix_messages/ui/pages/widgets/bottom_nav_bar_widget.dart';  
 
 class TaskDetail extends StatelessWidget {
   final Task task;

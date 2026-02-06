@@ -1,7 +1,7 @@
-import 'package:frontend/providers/load_hospitals_provider.dart';
+import 'package:matrix_messages/providers/load_hospitals_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:frontend/providers/auth_provider.dart';
-import 'package:frontend/ui/pages/qr/qr_scanner.dart';
+import 'package:matrix_messages/providers/auth_provider.dart';
+// import 'package:matrix_messages/ui/pages/qr/qr_scanner.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -191,7 +191,7 @@ class HospitalsState extends State<Hospitals> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const QrScanner()));
+                            builder: (context) => const SizedBox()));
                   },
                   child: Align(
                       alignment: Alignment.bottomLeft,

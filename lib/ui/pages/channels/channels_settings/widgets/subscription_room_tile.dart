@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/ui/pages/channels/channels_settings/widgets/secondary_channel_button.dart';
-import 'package:frontend/ui/pages/channels/channels_settings/widgets/primary_channel_button.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_settings/widgets/secondary_channel_button.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_settings/widgets/primary_channel_button.dart';
 import 'package:matrix/matrix.dart';
 
 class SubscriptionRoomTile extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:frontend/ui/pages/tasks/task_page/widgets/group_separator.dart';
-import 'package:frontend/ui/pages/tasks/task_page/widgets/task_tile.dart';
-import 'package:frontend/domain/entities/task.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/widgets/group_separator.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/widgets/task_tile.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
 import 'package:flutter/material.dart';
 
 class GroupedListView extends StatelessWidget {

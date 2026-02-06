@@ -1,7 +1,7 @@
-import 'package:frontend/ui/pages/tasks/task_detail/widgets/button_layout.dart';
-import 'package:frontend/ui/pages/tasks/widgets/task_label.dart';
-import 'package:frontend/domain/entities/task.dart';
-import 'package:frontend/globals.dart' as globals;
+import 'package:matrix_messages/ui/pages/tasks/task_detail/widgets/button_layout.dart';
+import 'package:matrix_messages/ui/pages/tasks/widgets/task_label.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
+import 'package:matrix_messages/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 

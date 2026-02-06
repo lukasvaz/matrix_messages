@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:frontend/ui/pages/hospitals/hospitals.dart';
-import 'package:frontend/ui/pages/widgets/bottom_nav_bar_widget.dart';
-import 'package:frontend/providers/auth_provider.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:matrix_messages/ui/pages/hospitals/hospitals.dart';
+import 'package:matrix_messages/ui/pages/widgets/bottom_nav_bar_widget.dart';
+import 'package:matrix_messages/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -22,9 +22,9 @@ class ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> _loadHospitalPreference() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      hospitalName = prefs.getString('hospital_name');
+      hospitalName = 'hospitalName'; //prefs.getString('hospital_name');
     });
   }
 

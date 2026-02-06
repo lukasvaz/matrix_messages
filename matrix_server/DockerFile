@@ -1,0 +1,11 @@
+FROM matrixdotorg/synapse:develop
+
+# Set environment variables
+ENV SYNAPSE_SERVER_NAME=my.matrix.host
+ENV SYNAPSE_REPORT_STATS=yes
+
+# Define the volume for persistent data
+VOLUME /data
+
+# Run the configuration generation command
+CMD ["generate"]

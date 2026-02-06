@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/services/database_hospitals/database_helper.dart';
+import 'package:matrix_messages/services/database_hospitals/database_helper.dart';
 
 class HospitalesProvider extends ChangeNotifier {
   List<Map<String, dynamic>> _hospitales = [];

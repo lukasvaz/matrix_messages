@@ -1,5 +1,5 @@
-import 'package:frontend/domain/entities/task.dart';
-import 'package:frontend/utils/validations.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
+import 'package:matrix_messages/utils/validations.dart';
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'dart:convert';

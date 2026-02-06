@@ -1,6 +1,6 @@
-import 'package:frontend/domain/entities/task.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/globals.dart';
+import 'package:matrix_messages/globals.dart';
 
 class TaskAlert extends StatelessWidget {
   final Task task;

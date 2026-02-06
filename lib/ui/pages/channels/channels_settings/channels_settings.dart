@@ -1,12 +1,12 @@
-import 'package:frontend/ui/pages/channels/channels_page/widgets/channels_searched_none.dart';
-import 'package:frontend/ui/pages/channels/channels_page/widgets/channels_empty.dart';
-import 'package:frontend/ui/pages/channels/channels_page/widgets/search_by.dart';
-import 'package:frontend/ui/pages/channels/channels_settings/widgets/subscription_folder_tile.dart';
-import 'package:frontend/ui/pages/channels/channels_settings/widgets/subscription_room_tile.dart';
-import 'package:frontend/ui/pages/widgets/appbar_with_settings.dart';
-import 'package:frontend/services/matrix/matrix_service.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_page/widgets/channels_searched_none.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_page/widgets/channels_empty.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_page/widgets/search_by.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_settings/widgets/subscription_folder_tile.dart';
+import 'package:matrix_messages/ui/pages/channels/channels_settings/widgets/subscription_room_tile.dart';
+import 'package:matrix_messages/ui/pages/widgets/appbar_with_settings.dart';
+import 'package:matrix_messages/services/matrix/matrix_service.dart';
 import 'package:provider/provider.dart';
-import 'package:frontend/globals.dart';
+import 'package:matrix_messages/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 

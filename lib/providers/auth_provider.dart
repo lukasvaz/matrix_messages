@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart'; // Importa la biblioteca Matrix
 import 'package:provider/provider.dart';
-import 'package:frontend/ui/pages/profile/profile.dart';
-import 'package:frontend/ui/pages/error/error_page.dart';
+import 'package:matrix_messages/ui/pages/profile/profile.dart';
+import 'package:matrix_messages/ui/pages/error/error_page.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool _loadingLogin = false;

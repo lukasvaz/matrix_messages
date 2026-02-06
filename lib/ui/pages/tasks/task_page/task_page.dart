@@ -1,13 +1,13 @@
-import 'package:frontend/ui/pages/tasks/task_page/widgets/grouped_list_view.dart';
-import 'package:frontend/ui/pages/tasks/task_page/filter_by/filter_by.dart';
-import 'package:frontend/ui/pages/tasks/task_page/widgets/search_by.dart';
-import 'package:frontend/ui/pages/tasks/task_page/widgets/group_by.dart';
-import 'package:frontend/ui/pages/widgets/bottom_nav_bar_widget.dart';
-import 'package:frontend/ui/pages/widgets/appbar_with_settings.dart';
-import 'package:frontend/services/matrix/matrix_service.dart';
-import 'package:frontend/domain/entities/task.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/widgets/grouped_list_view.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/filter_by/filter_by.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/widgets/search_by.dart';
+import 'package:matrix_messages/ui/pages/tasks/task_page/widgets/group_by.dart';
+import 'package:matrix_messages/ui/pages/widgets/bottom_nav_bar_widget.dart';
+import 'package:matrix_messages/ui/pages/widgets/appbar_with_settings.dart';
+import 'package:matrix_messages/services/matrix/matrix_service.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
 import 'package:provider/provider.dart';
-import 'package:frontend/globals.dart';
+import 'package:matrix_messages/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 

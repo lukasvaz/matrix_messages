@@ -1,8 +1,8 @@
-import 'package:frontend/ui/pages/channels/channel_chat/widgets/chat_information.dart';
-import 'package:frontend/ui/pages/channels/channel_chat/widgets/delete_message.dart';
-import 'package:frontend/ui/pages/channels/channel_chat/widgets/name_builder.dart';
-import 'package:frontend/ui/pages/channels/channel_chat/widgets/send_message.dart';
-import 'package:frontend/ui/pages/widgets/bottom_nav_bar_widget.dart';
+import 'package:matrix_messages/ui/pages/channels/channel_chat/widgets/chat_information.dart';
+import 'package:matrix_messages/ui/pages/channels/channel_chat/widgets/delete_message.dart';
+import 'package:matrix_messages/ui/pages/channels/channel_chat/widgets/name_builder.dart';
+import 'package:matrix_messages/ui/pages/channels/channel_chat/widgets/send_message.dart';
+import 'package:matrix_messages/ui/pages/widgets/bottom_nav_bar_widget.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter/material.dart';
