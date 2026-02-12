@@ -1,0 +1,35 @@
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    container_name: synapse-server
+    env_file:
+      - .env
+    volumes:
+      - synapse_data:/data
+    configs:
+      - source: homeserver_config
+        target: /configuration/homeserver.yaml      
+      - source: log_config
+        target: /configuration/my.matrix.host.log.config
+    secrets:
+      - source: signing_key
+        target: /configuration/my.matrix.host.signing.key
+    
+    entrypoint: ./bin/bash -c
+    command:
+      - "chown -R $UID:$GID /data && python ./start.py"
+    ports:
+      - "8008:8008"
+volumes:
+  synapse_data:
+
+configs:
+  homeserver_config:
+    file: ./configuration/homeserver.yaml 
+  log_config:
+    file: ./configuration/my.matrix.host.log.config
+
+secrets:
+  signing_key:
+    file: ./secrets/my.matrix.host.signing.key
+    
