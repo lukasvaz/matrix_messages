@@ -14,21 +14,20 @@ services:
     secrets:
       - source: signing_key
         target: /configuration/my.matrix.host.signing.key
-    
     entrypoint: ./bin/bash -c
     command:
       - "chown -R $UID:$GID /data && python ./start.py"
     ports:
-      - "8008:8008"
+      - "$SYNAPSE_HOST_PORT:$SYNAPSE_CONTAINER_PORT"
 volumes:
   synapse_data:
 
 configs:
+  # local path
   homeserver_config:
     file: ./configuration/homeserver.yaml 
   log_config:
     file: ./configuration/my.matrix.host.log.config
-
 secrets:
   signing_key:
     file: ./secrets/my.matrix.host.signing.key
