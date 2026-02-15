@@ -3,7 +3,7 @@ services:
     image: matrixdotorg/synapse:latest
     container_name: synapse-server
     env_file:
-      - .env
+      - dev.env
     volumes:
       - ./data:/data
     configs:
