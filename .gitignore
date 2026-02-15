@@ -45,3 +45,5 @@ app.*.map.json
 /android/app/release
 
 .TODOS.txt
+
+# /matrix_server/data/

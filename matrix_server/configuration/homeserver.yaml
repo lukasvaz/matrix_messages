@@ -8,7 +8,7 @@
 # For more information on how to configure Synapse, including a complete accounting of
 # each option, go to docs/usage/configuration/config_documentation.md or
 # https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
-server_name: "my.matrix.host"
+server_name: "development.host"
 listeners:
   - port: 8008
     resources:
@@ -33,7 +33,7 @@ database:
 media_store_path: /data/media_store
 # configurations
 pid_file: /configuration/homeserver.pid
-log_config: "/configuration/my.matrix.host.log.config"
-signing_key_path: "/configuration/my.matrix.host.signing.key"
+log_config: "/configuration/development.host.log.config"
+signing_key_path: "/configuration/development.host.signing.key"
 
 # vim:ft=yaml

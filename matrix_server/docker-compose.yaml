@@ -5,7 +5,7 @@ services:
     env_file:
       - .env
     volumes:
-      - synapse_data:/data
+      - ./data:/data
     configs:
       - source: homeserver_config
         target: /configuration/homeserver.yaml      
@@ -19,8 +19,6 @@ services:
       - "chown -R $UID:$GID /data && python ./start.py"
     ports:
       - "$SYNAPSE_HOST_PORT:$SYNAPSE_CONTAINER_PORT"
-volumes:
-  synapse_data:
 
 configs:
   # local path
