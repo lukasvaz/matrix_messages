@@ -46,4 +46,4 @@ app.*.map.json
 
 .TODOS.txt
 
-# /matrix_server/data/
+/matrix_server/data
