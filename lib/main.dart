@@ -12,10 +12,10 @@ import 'package:matrix/matrix.dart';
 
 main() async {
   // await dotenv.load(fileName: ".env");
+  WidgetsFlutterBinding.ensureInitialized();
   final client = await initializeMatrixClient();
   final user = await SharedPreferences.getInstance()
       .then((prefs) => prefs.getString('username'));
-  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
     runApp(MyApp(client: client, user: user));
