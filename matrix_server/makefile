@@ -1,10 +1,11 @@
-include dev.env
+ENV_FILE ?= dev.env
+include $(ENV_FILE)
 # docker commands
 compose_up:
-	docker compose --env-file ./dev.env up -d 
+	docker compose --env-file $(ENV_FILE) up -d	
 compose_down:
-	docker compose --env-file ./dev.env down
-logs:
+	docker compose --env-file $(ENV_FILE) down
+compose_logs:
 	docker logs -f synapse-server	
 exec:
 	docker exec -it synapse-server bash

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Parent .env location
-ENV_FILE="$(cd "$(dirname "$0")/.." && pwd)/.env"
+ENV_FILE="$(cd "$(dirname "$0")/.." && pwd)/dev.env"
 
 if [ ! -f "$ENV_FILE" ]; then
   echo "Error: $ENV_FILE not found" >&2
