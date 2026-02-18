@@ -16,5 +16,11 @@ forward_down:
 	bash commands/port_forwarding.sh down
 
 #matrix commands: creates an admin user
-create_admin:
+matrix_create_admin:
 	docker exec -it synapse-server register_new_matrix_user http://localhost:${SYNAPSE_HOST_PORT} -c /configuration/homeserver.yaml --admin
+matrix_create_room:
+	bash commands/matrix/create_room.sh	
+matrix_list_rooms:
+	bash commands/matrix/list_rooms.sh
+matrix_delete_room:
+	bash commands/matrix/delete_room.sh
