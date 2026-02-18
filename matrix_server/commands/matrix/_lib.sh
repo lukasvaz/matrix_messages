@@ -1,6 +1,6 @@
 #!/bin/sh
 # Common helpers for matrix command scripts
-ENV_FILE="$(cd "$(dirname "$0")/.." && pwd)/dev.env"
+ENV_FILE="$(cd "$(dirname "$0")/../.." && pwd)/dev.env"
 
 # parse KEY=VALUE or KEY:VALUE lines
 get_var() {
