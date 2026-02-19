@@ -28,3 +28,5 @@ matrix_list_users:
 	bash commands/matrix/list_users.sh
 matrix_create_default_spaces:
 	bash commands/matrix/create_default_spaces.sh
+matrix_add_child:
+	bash commands/matrix/add_child.sh < /dev/tty > /dev/tty

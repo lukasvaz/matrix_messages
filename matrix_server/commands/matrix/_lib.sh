@@ -17,11 +17,12 @@ get_var() {
   printf '%s' "$(printf '%s' "$line" | sed -E 's/^[^:=]*[:=][[:space:]]*//; s/[[:space:]]+$//; s/^(["'"'\\'"'])?//; s/(["'"'\\'"'])?$//')"
 }
 
-MATRIX_SERVER=$(get_var 'SYNAPSE_SERVER')
+SYNAPSE_HOST=$(get_var 'SYNAPSE_HOST')
 MATRIX_TOKEN=$(get_var 'SYNAPSE_TOKEN')
+SYNAPSE_SERVER_NAME=$(get_var 'SYNAPSE_SERVER_NAME')
 
-if [ -z "$MATRIX_SERVER" ] || [ -z "$MATRIX_TOKEN" ]; then
-  printf 'Required variables SYNAPSE_SERVER or SYNAPSE_TOKEN not found in %s\n' "$ENV_FILE" >&2
+if [ -z "$SYNAPSE_HOST" ] || [ -z "$MATRIX_TOKEN" ]; then
+  printf 'Required variables SYNAPSE_HOST or SYNAPSE_TOKEN not found in %s\n' "$ENV_FILE" >&2
   exit 1
 fi
 
@@ -32,7 +33,7 @@ fi
 
 api_get() {
   path="$1"
-  curl -sS -X GET "http://${MATRIX_SERVER}${path}" \
+  curl -sS -X GET "http://${SYNAPSE_HOST}${path}" \
     -H "Authorization: Bearer ${MATRIX_TOKEN}" \
     -H "Content-Type: application/json"
 }
@@ -40,7 +41,7 @@ api_get() {
 api_post_json() {
   path="$1"
   json="$2"
-  curl -sS -X POST "http://${MATRIX_SERVER}${path}" \
+  curl -sS -X POST "http://${SYNAPSE_HOST}${path}" \
     -H "Authorization: Bearer ${MATRIX_TOKEN}" \
     -H "Content-Type: application/json" \
     -d "$json"
@@ -49,7 +50,7 @@ api_post_json() {
 api_delete_json() {
   path="$1"
   json="$2"
-  curl -sS -X DELETE "http://${MATRIX_SERVER}${path}" \
+  curl -sS -X DELETE "http://${SYNAPSE_HOST}${path}" \
     -H "Authorization: Bearer ${MATRIX_TOKEN}" \
     -H "Content-Type: application/json" \
     -d "$json"
