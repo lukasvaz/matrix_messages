@@ -23,8 +23,7 @@ class AuthProvider extends ChangeNotifier {
         _changePage(context);
         return;
       }
-
-      await client.checkHomeserver(Uri.https(server));
+      await client.checkHomeserver(Uri.http(server));
       await client.login(
         LoginType.mLoginPassword,
         identifier: AuthenticationUserIdentifier(user: user),

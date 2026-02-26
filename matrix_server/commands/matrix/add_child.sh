@@ -15,16 +15,7 @@ SPACES="canales tareas"
 # Prompt for parent: accept full canonical alias (#canales:host), local name (canales) or name:host
 parent_room_id=$(prompt "Enter space ID: ")
 
-# createing new room
-# name=$(required_input "Room name: ")
-# private=$(required_choice "Is the room private? (yes or no): " yes no)
-# if [ "$private" = "yes" ]; then preset=private_chat; else preset=public_chat; fi
-# alias=$(required_input "Room alias local part (without # or :domain): ")
-# federate=$(required_choice "Federate? (yes or no): " yes no)
-# if [ "$federate" = "yes" ]; then federate_bool=true; else federate_bool=false; fi
-# topic=$(required_input "Topic: ")
 
-#
 printf 'New room data: %s\n' > /dev/tty
 name=$(prompt "Child room name: ")
 alias=$(prompt "Child room alias local part (without # or :domain): ")
