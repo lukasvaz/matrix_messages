@@ -13,13 +13,11 @@ name=$(required_input "Room name: ")
 private=$(required_choice "Is the room private? (yes or no): " yes no)
 if [ "$private" = "yes" ]; then preset=private_chat; else preset=public_chat; fi
 alias=$(required_input "Room alias local part (without # or :domain): ")
-federate=$(required_choice "Federate? (yes or no): " yes no)
-if [ "$federate" = "yes" ]; then federate_bool=true; else federate_bool=false; fi
 topic=$(required_input "Topic: ")
 
 payload=$(cat <<JSON
 {
-  "creation_content": { "m.federate": ${federate_bool} },
+  "creation_content": { "m.federate": false },
   "name": "${name}",
   "preset": "${preset}",
   "room_alias_name": "${alias}",

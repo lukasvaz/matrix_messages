@@ -16,8 +16,28 @@ forward_down:
 	bash commands/port_forwarding.sh down
 
 #matrix commands: creates an admin user
-create_admin:
+matrix_create_admin:
 	docker exec -it synapse-server register_new_matrix_user http://localhost:${SYNAPSE_HOST_PORT} -c /configuration/homeserver.yaml --admin
 
-create_room:
-	bash commands/matrix.sh
+matrix_create_room:
+	bash commands/matrix/create_room.sh
+
+matrix_create_default_spaces:
+	bash commands/matrix/create_default_spaces.sh
+
+matrix_list_rooms:
+	bash commands/matrix/list_rooms.sh
+
+matrix_list_users:
+	bash commands/matrix/list_users.sh
+
+matrix_delete_room:
+	bash commands/matrix/delete_room.sh
+
+# create a non-admin user via synapse helper
+matrix_create_user:
+	docker exec -it synapse-server register_new_matrix_user http://localhost:${SYNAPSE_HOST_PORT} -c /configuration/homeserver.yaml
+
+# add a child room to a space (interactive)
+matrix_add_child:
+	bash commands/matrix/add_child.sh < /dev/tty > /dev/tty
