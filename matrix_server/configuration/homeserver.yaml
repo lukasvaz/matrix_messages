@@ -36,4 +36,9 @@ pid_file: /configuration/homeserver.pid
 log_config: "/configuration/development.host.log.config"
 signing_key_path: "/configuration/development.host.signing.key"
 
+#Room configurations
+enable_room_list_search: true
+room_list_publication_rules:
+- user_id: '@root:development.host'
+  action: allow
 # vim:ft=yaml
