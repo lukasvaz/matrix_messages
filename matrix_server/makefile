@@ -41,3 +41,5 @@ matrix_create_user:
 # add a child room to a space (interactive)
 matrix_add_child:
 	bash commands/matrix/add_child.sh < /dev/tty > /dev/tty
+matrix_join_user:
+	bash commands/matrix/join_user.sh < /dev/tty > /dev/tty
