@@ -43,3 +43,5 @@ matrix_add_child:
 	bash commands/matrix/add_child.sh < /dev/tty > /dev/tty
 matrix_join_user:
 	bash commands/matrix/join_user.sh < /dev/tty > /dev/tty
+matrix_kick_user:
+	bash commands/matrix/kick_user.sh < /dev/tty > /dev/tty
