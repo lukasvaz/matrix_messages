@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:matrix_messages/features/authentication/providers/auth_provider.dart';
+import 'package:matrix_messages/ui/screens/rooms/rooms.dart';
+import 'package:matrix/matrix.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,15 +29,94 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
-    final server = _serverCtrl.text.trim();
     final user = _userCtrl.text.trim();
     final pass = _passCtrl.text;
-    final auth = context.read<AuthProvider>();
+    final server = _serverCtrl.text.trim();
 
+    // Capture client synchronously from the tree
+    final client = context.read<Client>();
     try {
-      await auth.login(server, user, pass, context);
-      // AuthProvider navigates on success
+      // Ensure homeserver is validated and set on the client
+      try {
+        await client.checkHomeserver(Uri.http(server));
+      } catch (e) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Invalid homeserver: ${e.toString()}')),
+        );
+        return;
+      }
+
+      final prefs = await SharedPreferences.getInstance();
+      final keyPrefix = '$user@${server}';
+
+      final storedToken = prefs.getString('${keyPrefix}_accessToken');
+      // If a stored access token exists, initialize the client from stored credentials
+      if (storedToken != null && storedToken.isNotEmpty) {
+        print("Found stored token for $keyPrefix, initializing client from stored credentials");
+        final storedRefresh = prefs.getString('${keyPrefix}_refreshToken');
+        final storedUserId = prefs.getString('${keyPrefix}_userId');
+        final storedDeviceId = prefs.getString('${keyPrefix}_deviceId');
+        final storedDeviceName = prefs.getString('${keyPrefix}_deviceName') ?? '';
+        final expiresIso = prefs.getString('${keyPrefix}_accessTokenExpiresAt');
+        DateTime? expiresAt;
+        if (expiresIso != null && expiresIso.isNotEmpty) {
+          try {
+            expiresAt = DateTime.parse(expiresIso);
+          } catch (_) {
+            expiresAt = null;
+          }
+        }
+
+        await client.init(
+          newToken: storedToken,
+          newTokenExpiresAt: expiresAt,
+          newRefreshToken: storedRefresh,
+          newUserID: storedUserId,
+          newHomeserver: client.homeserver,
+          newDeviceName: storedDeviceName,
+          newDeviceID: storedDeviceId,
+        );
+
+        if (!mounted) return;
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const RoomsSection()),
+        );
+        return;
+      }
+
+      // No stored token -> perform password login and persist result
+      print("No stored token for $keyPrefix, performing password login");
+      final loginResponse = await client.login(
+        LoginType.mLoginPassword,
+        identifier: AuthenticationUserIdentifier(user: user),
+        password: pass,
+      );
+      print("Login response: $loginResponse");
+      // Persist relevant attributes into SharedPreferences
+      await prefs.setString('${keyPrefix}_accessToken', loginResponse.accessToken);
+      if (loginResponse.refreshToken != null) {
+        await prefs.setString('${keyPrefix}_refreshToken', loginResponse.refreshToken!);
+      }
+      await prefs.setString('${keyPrefix}_userId', loginResponse.userId);
+      await prefs.setString('${keyPrefix}_deviceId', loginResponse.deviceId);
+      await prefs.setString('${keyPrefix}_deviceName', client.deviceName ?? '');
+
+      if (loginResponse.expiresInMs != null) {
+        final dt = DateTime.now().add(Duration(milliseconds: loginResponse.expiresInMs!));
+        await prefs.setString('${keyPrefix}_accessTokenExpiresAt', dt.toIso8601String());
+      }
+
+      // If the widget was disposed while awaiting login, bail out.
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const RoomsSection()),
+      );
     } catch (e) {
+      // Only show UI feedback if still mounted
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Login failed: ${e.toString()}')),
       );
