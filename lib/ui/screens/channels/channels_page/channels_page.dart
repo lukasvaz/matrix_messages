@@ -33,10 +33,12 @@ class ChannelsPageState extends State<ChannelsPage> {
     loadChannelsRooms();
   }
 
-  void loadChannelsRooms() {
+  Future<void> loadChannelsRooms() async {
+    
     final client = Provider.of<Client>(context, listen: false);
     var folders = matrixService.getClientRoomsInSpace(
-        client, '#Canales:matrix1.lahuen.health');
+        client, '#canales:development.host');
+    print(folders?.first.tags);
     folders = folders
         ?.where((room) => room.tags.keys.contains("tlc.subscribed"))
         .toList();

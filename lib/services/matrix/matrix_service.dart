@@ -97,10 +97,10 @@ class MatrixService {
   /// Takes matrix client and the roomSpace from which tasks will be obtained (Tasks space), validating them.
   Future<List<Task>> getTasksFromRooms(
       Client client, String roomSpace) async {
-    final rooms = getClientRoomsInSpace(client, roomSpace) ?? [];
+    final rooms = getClientRoomsInSpace(client, roomSpace);
     List<Task> tasks = [];
 
-    for (final room in rooms) {
+    for (final room in rooms!) {
       final taskData =
           await getRoomStateEvent(room.id, client.accessToken!, 'm.room.tarea');
       if (taskData != null && isValidTask(taskData)) {
@@ -143,6 +143,86 @@ class MatrixService {
       return task;
     } else {
       throw Exception('Error al cargar la tarea');
+    }
+  }
+
+  Future<List<Room>> discoverPublicRooms(
+      Client client, {
+      int limit = 50,
+    }) async {
+    final String homeserver = client.homeserver.toString();
+
+    final uri = Uri.parse(homeserver).replace(
+      path: '/_matrix/client/v3/publicRooms',
+      queryParameters: {'limit': '$limit'},
+    );
+    
+    final headers = <String, String>{'Accept': 'application/json'};
+    if (client.accessToken != null) {
+      headers['Authorization'] = 'Bearer ${client.accessToken}';
+    }
+
+    try {
+      final response = await http.get(uri, headers: headers);
+      // debug
+      if (response.statusCode != 200) return <Room>[];
+
+      final Map<String, dynamic> body = jsonDecode(response.body);
+      final chunk = (body['chunk'] as List<dynamic>?) ?? <dynamic>[];
+
+      final List<Room> rooms = [];
+      for (final entry in chunk) {
+        print(entry); 
+        if (entry is! Map<String, dynamic>) continue;
+
+        final String? roomId = entry['room_id'] as String?;
+        final String? canonicalAlias = entry['canonical_alias'] as String?;
+
+        Room? room;
+        if (roomId != null) {
+          room = client.getRoomById(roomId);
+        }
+        if (room == null && canonicalAlias != null) {
+          room = client.getRoomByAlias(canonicalAlias);
+        }
+
+        if (room != null) {
+          rooms.add(room);
+        }
+      }
+
+      return rooms;
+    } catch (e) {
+      return <Room>[];
+    }
+  }
+
+  /// Fetch the raw public rooms directory chunk from the homeserver.
+  /// Returns a list of JSON objects as returned by /publicRooms (each map may contain name, room_id, canonical_alias, topic, room_type, ...)
+  Future<List<Map<String, dynamic>>> discoverPublicRoomsRaw(
+      Client client, {
+      int limit = 50,
+    }) async {
+    final String homeserver = client.homeserver.toString();
+    final uri = Uri.parse(homeserver).replace(
+      path: '/_matrix/client/v3/publicRooms',
+      queryParameters: {'limit': '$limit'},
+    );
+
+    final headers = <String, String>{'Accept': 'application/json'};
+    if (client.accessToken != null) {
+      headers['Authorization'] = 'Bearer ${client.accessToken}';
+    }
+
+    try {
+      final response = await http.get(uri, headers: headers);
+      if (response.statusCode != 200) return <Map<String, dynamic>>[];
+
+      final Map<String, dynamic> body = jsonDecode(response.body);
+      final chunk = (body['chunk'] as List<dynamic>?) ?? <dynamic>[];
+      return chunk.cast<Map<String, dynamic>>();
+    } catch (e) {
+      return <Map<String, dynamic>>[];
     }
   }
 }

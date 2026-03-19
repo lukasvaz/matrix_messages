@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart'; // Importa la biblioteca Matrix
 import 'package:provider/provider.dart';
 import 'package:matrix_messages/ui/screens/profile/profile.dart';
 import 'package:matrix_messages/ui/screens/error/error_page.dart';
+import 'package:matrix_messages/ui/screens/rooms/rooms.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool _loadingLogin = false;
@@ -65,7 +66,7 @@ class AuthProvider extends ChangeNotifier {
   void _changePage(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ProfilePage()),
+      MaterialPageRoute(builder: (context) => const RoomsSection()),
     );
   }
 

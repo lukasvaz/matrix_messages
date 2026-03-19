@@ -36,7 +36,7 @@ class ChannelsSettingsPageState extends State<ChannelsSettingsPage> {
   void loadChannelsRooms() {
     final client = Provider.of<Client>(context, listen: false);
     final rooms = matrixService.getClientRoomsInSpace(
-        client, '#Canales:matrix1.lahuen.health');
+        client, '#canales:development.host');
     if (_channelsRooms.toString() != rooms.toString()) {
       // Si hay alguna sala o carpeta nueva o eliminada
       _channelsRooms = rooms;
@@ -125,7 +125,7 @@ class ChannelsSettingsPageState extends State<ChannelsSettingsPage> {
                             .where((room) => !room.isSpace)
                             .toList();
 
-                        final mergedList = [...folders, ...individualRooms];
+                        final mergedList = _channelsRooms!.toList();
                         return Column(
                           children: [
                             Expanded(

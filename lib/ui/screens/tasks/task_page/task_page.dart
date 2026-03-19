@@ -1,15 +1,15 @@
-import 'package:matrix_messages/ui/screens/tasks/task_page/widgets/grouped_list_view.dart';
-import 'package:matrix_messages/ui/screens/tasks/task_page/filter_by/filter_by.dart';
-import 'package:matrix_messages/ui/screens/tasks/task_page/widgets/search_by.dart';
-import 'package:matrix_messages/ui/screens/tasks/task_page/widgets/group_by.dart';
-import 'package:matrix_messages/ui/screens/widgets/bottom_nav_bar_widget.dart';
-import 'package:matrix_messages/ui/screens/widgets/appbar_with_settings.dart';
-import 'package:matrix_messages/services/matrix/matrix_service.dart';
-import 'package:matrix_messages/domain/entities/task.dart';
-import 'package:provider/provider.dart';
-import 'package:matrix_messages/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
+import 'package:matrix_messages/domain/entities/task.dart';
+import 'package:matrix_messages/globals.dart';
+import 'package:matrix_messages/services/matrix/matrix_service.dart';
+import 'package:matrix_messages/ui/screens/tasks/task_page/filter_by/filter_by.dart';
+import 'package:matrix_messages/ui/screens/tasks/task_page/widgets/group_by.dart';
+import 'package:matrix_messages/ui/screens/tasks/task_page/widgets/grouped_list_view.dart';
+import 'package:matrix_messages/ui/screens/tasks/task_page/widgets/search_by.dart';
+import 'package:matrix_messages/ui/screens/widgets/appbar_with_settings.dart';
+import 'package:matrix_messages/ui/screens/widgets/bottom_nav_bar_widget.dart';
+import 'package:provider/provider.dart';
 
 
 class TaskPage extends StatefulWidget {
@@ -223,7 +223,7 @@ class TaskPageState extends State<TaskPage> {
                 builder: (context, _) {
                   return FutureBuilder<List<Task>>(
                       future: matrixService.getTasksFromRooms(
-                          client, '#Tareas:matrix1.lahuen.health'),
+                          client, '#canales:development.host'), 
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -250,6 +250,7 @@ class TaskPageState extends State<TaskPage> {
                             textAlign: TextAlign.center,
                           ));
                         } else if (snapshot.hasData) {
+                          print(snapshot.data);
                           final actualTasks = _tasks?.toString();
                           _tasks = snapshot.data
                               ?.where((task) => isRenderTile(task, client))
