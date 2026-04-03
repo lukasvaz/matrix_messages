@@ -49,7 +49,7 @@ class SendMessageState extends State<SendMessage> {
         border: Border(top: BorderSide(color: Color(0xffdcdcdc))),
       ),
       padding:
-          EdgeInsets.symmetric(horizontal: screenProportion * 5, vertical: 8),
+          EdgeInsets.symmetric(horizontal: screenProportion * 5, vertical: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

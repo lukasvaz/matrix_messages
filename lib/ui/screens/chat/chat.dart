@@ -195,8 +195,6 @@ class ChatScreenState extends State<ChatScreen> {
                             secondaryColor: Color(0xFFDCDCDC),
                             messageInsetsVertical: 10));
                   }))
-        ])),
-        bottomNavigationBar: BottomNavBarWidget(
-            screenWidth: screenWidth, screenHeight: screenHeight, section: 2));
+        ])));
   }
 }
