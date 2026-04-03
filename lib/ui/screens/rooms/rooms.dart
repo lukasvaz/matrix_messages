@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matrix_messages/ui/screens/widgets/profile_image.dart';
+import 'package:matrix_messages/ui/screens/chat/chat.dart';
 import 'package:provider/provider.dart';
 import 'package:matrix/matrix.dart';
 import 'dart:async';
@@ -131,7 +132,14 @@ class _RoomsSectionState extends State<RoomsSection> {
                                 SizedBox(height: 6),
                               ],
                             ),
-                            onTap: () {},
+                            // redirect to chat 
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ChatScreen(room: room),
+                                ),
+                              );
+                            },
                           ),
                           const Divider(height: 1),
                         ],
