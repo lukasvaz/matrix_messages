@@ -3,6 +3,7 @@ import 'package:matrix_messages/ui/screens/widgets/profile_image.dart';
 import 'package:matrix_messages/ui/screens/chat/chat.dart';
 import 'package:provider/provider.dart';
 import 'package:matrix/matrix.dart';
+import 'package:matrix_messages/ui/screens/rooms/room_search.dart';
 import 'dart:async';
 
 class RoomsSection extends StatefulWidget {
@@ -58,7 +59,23 @@ class _RoomsSectionState extends State<RoomsSection> {
         actions: [
           IconButton(
             icon: const Icon(Icons.search, color: Colors.black54),
-            onPressed: () {},
+            onPressed: (){
+              // redirect to  room_search
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => RoomSearch(
+                    rooms: _client.rooms,
+                    onRoomTap: (room) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ChatScreen(room: room),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
           ),
           PopupMenuButton<String>(
             icon: const Icon(Icons.more_vert, color: Colors.black54),
@@ -81,16 +98,6 @@ class _RoomsSectionState extends State<RoomsSection> {
                 decoration: BoxDecoration(
                   color: const Color(0xFFF2F2F2),
                   borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Row(
-                  children: [
-                    Icon(Icons.search, color: Colors.black45),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Text('Search rooms, people...', style: TextStyle(color: Colors.black45)),
-                    ),
-                    Icon(Icons.filter_list, color: Colors.black45),
-                  ],
                 ),
               ),
             ),
